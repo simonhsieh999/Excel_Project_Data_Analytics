@@ -36,5 +36,5 @@ The following excel tools were used to analyze data and to create the dashboard:
 
 #### Bar Charts
 
-<img src="https://github.com/user-attachments/assets/213e9f3f-af6d-4205-bf50-13638fdde5c9" alt="Job Title Chart" width="430" height="300">
-<img src="https://github.com/user-attachments/assets/2eb01561-a324-496b-9e3f-27f39167f0c9" alt="Job Title Chart" width="430" height="300">
+<img src="https://github.com/user-attachments/assets/213e9f3f-af6d-4205-bf50-13638fdde5c9" alt="Job Title Chart" width="430" height="330">
+<img src="https://github.com/user-attachments/assets/2eb01561-a324-496b-9e3f-27f39167f0c9" alt="Job Title Chart" width="430" height="330">
