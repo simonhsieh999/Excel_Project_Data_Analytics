@@ -74,3 +74,50 @@ After extracting, transforming, and loading both the salary and skills data, I c
 * There is a positive correlation between the median salary and the number of skills required for the job position as indicated by the positive slope trend line.
 * Engineer roles require more skills than the analyst and scientist roles, yet some of the analyst and scientist roles have a higher median salary than some of the engineer roles requiring more skills. This can mean that for a higher median salary, it's not about the quantity of skills required, but the certain specialized skills for the role that are required. 
 
+## 2. What are the median data job salaries in different countries?
+
+I first used Power Pivot to create a data model that integrates both the data_jobs_salary and data_jobs_skills tables.
+
+![image](https://github.com/user-attachments/assets/dbb14ac4-4b9d-4394-8f01-51e5f6ff287a)
+
+Then, I created a Pivot Table using the data model from Power Pivot. In the Pivot Table, I had the job title as the row, and the median salaries as the values. I wanted to create 3 different median salary columns to analyze: the general median salary, the median salary in the US, and the median salary for countries outside of the US. I did that by creating 3 different DAX measures. 
+
+#### The general median salary measure:
+
+`Median Salary := MEDIAN(data_jobs_all[salary_year_avg])`
+
+#### The US median salary measure:
+
+`=CALCULATE([Median Salary], data_jobs_salary[job_country]="United States")`
+
+#### The non-US median salary measure:
+
+`=CALCULATE([Median Salary], data_jobs_salary[job_country]<>"United States")`
+
+#### Resulting Pivot Table:
+
+<img src="https://github.com/user-attachments/assets/8f1f3bc7-06ce-49df-89de-65cab6e556f5" alt="Salary Query" width="650" height="300">
+
+### Analysis
+
+#### Insights:
+
+* The total US median salary is greater than the total non-US median salary, and there is a big salary gap for engineer roles between the US and non-US. This can indicate that engineer roles in the US are highly valued.
+* Senior data engineer and senior data scientist roles command a high salary close to $150,000 for both the US and non-US, which indicates the value of those roles worldwide.
+
+## 3. What are the top skills for data professionals?
+
+In order to find out the top skills for data professionals, I first created a relationship on Power Pivot between the `data_jobs_salary` and `data_jobs_skill` tables using the `job_id` column that exists in both tables within the data model.
+
+<img src="https://github.com/user-attachments/assets/914895b6-c0fa-476e-89ab-86ab87f50a2c" alt="Salary Query" width="650" height="500">
+
+Then, I created a Pivot Table and Pivot Chart using the data model. On the Pivot Table, I had the top 10 skills for the rows, and created a skill likelihood measure that has each skill as a percentage of the total job postings. I then created a bar chart as the Pivot Chart illustrating the top 10 skills in terms of its skill likelihood.
+
+<img src="https://github.com/user-attachments/assets/7998bd49-a7fc-4dde-add0-c8a93e329942" alt="Salary Query" width="650" height="300">
+
+#### Insights:
+* From the bar chart, SQL and Python are the top 2 skills by a large margin compared to the other skills. This shows the importance of using those tools in data processing and analysis for data professionals.
+* The next top skill is Tableau, which shows the importance of data visualization for data professionals.
+
+## 4. What is the salary for the top 10 skills?
+
